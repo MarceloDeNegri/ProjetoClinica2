@@ -38,5 +38,29 @@ class PacientesSeeder extends Seeder
             'alergico'=>'Sim',
             'responsavel_id'=>3,
             ]);
+            DB::table('pacientes')->insert([
+                'nome'=>'Mateus Henrique',
+                'dtNascimento'=>'2010-09-08' ,
+                'Status'=>'I',
+                'tipoSanguineo'=>'AB',
+                'alergico'=>'Sim',
+                'responsavel_id'=>4,
+                ]);
+                DB::table('pacientes')->insert([
+                    'nome'=>'Maria João',
+                    'dtNascimento'=>'2010-09-08' ,
+                    'Status'=>'I',
+                    'tipoSanguineo'=>'AB',
+                    'alergico'=>'Sim',
+                    'responsavel_id'=>5,
+                    ]);
+                    DB::table('pacientes')->insert([
+                        'nome'=>'Gabriela',
+                        'dtNascimento'=>'2010-09-08' ,
+                        'Status'=>'I',
+                        'tipoSanguineo'=>'AB',
+                        'alergico'=>'Sim',
+                        'responsavel_id'=>6,
+                        ]);
     }
 }

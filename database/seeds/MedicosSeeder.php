@@ -12,25 +12,36 @@ class MedicosSeeder extends Seeder
     public function run()
     {
         DB::table('medicos')->insert([
-        'Nome'=>'Jaira',
+        'Nome'=>'Guilherme',
         'crm'=>'12345',
-        'user_id'=>1,
-        'especializacao_id'=>1,
+        'user_id'=>9,
+
 
         ]);
         DB::table('medicos')->insert([
-            'Nome'=>'Paulo',
+        'Nome'=>'Regis',
         'crm'=>'123456',
-        'user_id'=>2,
-        'especializacao_id'=>2,
+        'user_id'=>7,
+
 
         ]);
         DB::table('medicos')->insert([
-            'Nome'=>'Pedro',
+        'Nome'=>'Marisane',
         'crm'=>'12345',
-        'user_id'=>3,
-        'especializacao_id'=>3,
+        'user_id'=>8,
 
         ]);
+        DB::table('medicos')->insert([
+            'Nome'=>'Enio',
+            'crm'=>'12345',
+            'user_id'=>13,
+
+            ]);
+        DB::table('medicos')->insert([
+                'Nome'=>'Roque',
+                'crm'=>'12345',
+                'user_id'=>14,
+
+                ]);
     }
 }

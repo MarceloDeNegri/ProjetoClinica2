@@ -22,5 +22,9 @@ class EspecializacaosSeeder extends Seeder
         DB::table('especializacoes')->insert([
         'nome'=>'Ortopedia',
         'descricao'=>' A ortopedia é a especialidade médica que cuida das doenças e deformidades relacionadas aos elementos do aparelho locomotor, como ossos, músculos, ligamentos e articulações. ',]);
+
+         DB::table('especializacoes')->insert([
+        'nome'=>'Neurologista',
+        'descricao'=>' Cuida da parte neuromotora ',]);
     }
 }

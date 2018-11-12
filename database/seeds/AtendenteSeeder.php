@@ -12,22 +12,22 @@ class AtendenteSeeder extends Seeder
     public function run()
     {
         DB::table('atendentes')->insert([
-        'Nome'=>'Jurema',
+        'Nome'=>'Marcelo',
         'dtAdmissao'=>'2003-09-09',
         'cracha'=>'34567890',
-        'user_id'=>7,
+        'user_id'=>1,
         ]);
         DB::table('atendentes')->insert([
-            'Nome'=>'Juju',
+            'Nome'=>'Raiane',
             'dtAdmissao'=>'2003-10-09',
             'cracha'=>'34567890',
-            'user_id'=>8,
+            'user_id'=>2,
             ]);
             DB::table('atendentes')->insert([
-                'Nome'=>'Jojo',
+                'Nome'=>'Roberto',
                 'dtAdmissao'=>'2005-09-09',
                 'cracha'=>'34567890',
-                'user_id'=>9,
+                'user_id'=>3,
                 ]);
     }
 }

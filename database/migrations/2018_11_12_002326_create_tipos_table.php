@@ -18,7 +18,7 @@ class CreateTiposTable extends Migration
             $table->integer('medico_id')->unsigned();
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
             $table->integer('especializacao_id')->unsigned();
-            $table->foreign('especializacao_id')->references('id')->on('especializacaos')->onDelete('cascade');
+            $table->foreign('especializacao_id')->references('id')->on('especializacoes')->onDelete('cascade');
             $table->timestamps();
         });
     }

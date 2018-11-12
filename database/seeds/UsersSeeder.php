@@ -51,7 +51,7 @@ class UsersSeeder extends Seeder
                         'telefone'=>'3444-1640',
                         'cpf'=>'1234567',
                         'rg'=>'3445',
-                        'nivel_acesso'=>'2',
+                        'nivel_acesso'=>'3',
                         'dtNascimento'=>'2000-10-10',
                         'status'=>'A',
                         ]);
@@ -62,7 +62,7 @@ class UsersSeeder extends Seeder
                             'telefone'=>'3444-1640',
                             'cpf'=>'1234567',
                             'rg'=>'3445',
-                            'nivel_acesso'=>'2',
+                            'nivel_acesso'=>'3',
                             'dtNascimento'=>'2000-10-10',
                             'status'=>'A',
                             ]);
@@ -73,7 +73,7 @@ class UsersSeeder extends Seeder
                                 'telefone'=>'3444-1640',
                                 'cpf'=>'1234567',
                                 'rg'=>'3445',
-                                'nivel_acesso'=>'2',
+                                'nivel_acesso'=>'3',
                                 'dtNascimento'=>'2000-10-10',
                                 'status'=>'A',
                                 ]);
@@ -84,7 +84,7 @@ class UsersSeeder extends Seeder
                                     'telefone'=>'3444-1640',
                                     'cpf'=>'1234567',
                                     'rg'=>'3445',
-                                    'nivel_acesso'=>'3',
+                                    'nivel_acesso'=>'2',
                                     'dtNascimento'=>'2000-10-10',
                                     'status'=>'A',
                                     ]);
@@ -95,7 +95,7 @@ class UsersSeeder extends Seeder
                                         'telefone'=>'3444-1640',
                                         'cpf'=>'1234567',
                                         'rg'=>'3445',
-                                        'nivel_acesso'=>'3',
+                                        'nivel_acesso'=>'2',
                                         'dtNascimento'=>'2000-10-10',
                                         'status'=>'A',
                                         ]);
@@ -106,9 +106,64 @@ class UsersSeeder extends Seeder
                                             'telefone'=>'3444-1640',
                                             'cpf'=>'1234567',
                                             'rg'=>'3445',
-                                            'nivel_acesso'=>'3',
+                                            'nivel_acesso'=>'2',
                                             'dtNascimento'=>'2000-10-10',
                                             'status'=>'A',
                                             ]);
-    }
+    DB::table('users')->insert([
+        'name'=>'Matias',
+        'email'=>'matias@bol.com.br',
+        'password'=>bcrypt('123456'),
+        'telefone'=>'3444-1640',
+        'cpf'=>'1234567',
+        'rg'=>'3445',
+        'nivel_acesso'=>'3',
+        'dtNascimento'=>'2000-10-10',
+        'status'=>'A',
+        ]);
+        DB::table('users')->insert([
+            'name'=>'Geromel',
+            'email'=>'geromel@bol.com.br',
+            'password'=>bcrypt('123456'),
+            'telefone'=>'3444-1640',
+            'cpf'=>'1234567',
+            'rg'=>'3445',
+            'nivel_acesso'=>'3',
+            'dtNascimento'=>'2000-10-10',
+            'status'=>'A',
+            ]);
+            DB::table('users')->insert([
+                'name'=>'Bolsonaro',
+                'email'=>'bolsonaro@bol.com.br',
+                'password'=>bcrypt('123456'),
+                'telefone'=>'3444-1640',
+                'cpf'=>'1234567',
+                'rg'=>'3445',
+                'nivel_acesso'=>'3',
+                'dtNascimento'=>'2000-10-10',
+                'status'=>'A',
+                ]);
+                DB::table('users')->insert([
+                    'name'=>'MedicoTeste',
+                    'email'=>'teste@bol.com.br',
+                    'password'=>bcrypt('123456'),
+                    'telefone'=>'3444-1640',
+                    'cpf'=>'1234567',
+                    'rg'=>'3445',
+                    'nivel_acesso'=>'2',
+                    'dtNascimento'=>'2000-10-10',
+                    'status'=>'A',
+                    ]);
+                    DB::table('users')->insert([
+                        'name'=>'Teste2',
+                        'email'=>'teste2@bol.com.br',
+                        'password'=>bcrypt('123456'),
+                        'telefone'=>'3444-1640',
+                        'cpf'=>'1234567',
+                        'rg'=>'3445',
+                        'nivel_acesso'=>'3',
+                        'dtNascimento'=>'2000-10-10',
+                        'status'=>'A',
+                        ]);
+}
 }
