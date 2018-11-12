@@ -24,8 +24,10 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $novo_user = $request->all();
-        User::create($novo_user);
+        $user = User::create($request->all());
+        $password = Hash::make($request->get('password');
+        $user->password = $password;
+        $user->save();
         flash('Usuario feito com Sucesso')->success();
         return redirect()->route('users');
     }

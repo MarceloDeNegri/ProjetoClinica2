@@ -33,11 +33,7 @@
 
         <td>
 
-            <a href="{{route('agendamentos.edit', ['id'=>$age->id]) }}"
-                class="btn-sm btn-success">Editar</a>
-            <a href="{{route('agendamentos.delete', ['id'=> $age->id]) }}"
-                class="btn-sm btn-danger">Remover</a>
-            <a href="{{route('atendimentos.create', ['id'=> $age->id]) }}"
+            <a href="{{route('umedicos.createAtendimento', ['id'=> $age->id]) }}"
                 class="btn-sm btn-danger">Atender</a>
 
         </td>

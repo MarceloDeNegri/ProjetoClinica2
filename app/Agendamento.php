@@ -11,7 +11,7 @@ class Agendamento extends Model
 
     protected $fillable = [
         'dtConsulta',
-        'valor',
+        'hora',
         'condicao',
         'paciente_id',
         'medico_id',

@@ -14,7 +14,7 @@
 
         @endif
 
-        {!!Form::open(['route' =>'atendimentos.store'])!!}
+        {!!Form::open(['route' =>'umedicos.store'])!!}
 
         <div class="form-group" >
             {!!Form::label('hora_inicio', 'Hora Inicio:' )!!}

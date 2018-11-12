@@ -16,7 +16,7 @@ class AgendamentoController extends Controller
         }
 
     public function index(){
-        $agendamentos = Agendamento::paginate($this->totalPage);
+        $agendamentos = Agendamento::orderBy('id','desc')->paginate($this->totalPage);
         return view('agendamentos.index', ['agendamentos'=>$agendamentos]);
     }
 

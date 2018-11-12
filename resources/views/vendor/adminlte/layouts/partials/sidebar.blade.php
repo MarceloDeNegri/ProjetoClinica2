@@ -35,8 +35,8 @@
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> LISTAGEM</a></li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> CADASTRAR</a></li>
+                            <li><a href="{{ url('agendamentos') }}"><i class="fa fa-circle-o"></i> LISTAGEM</a></li>
+                            <li><a href="{{ url('agendamentos/create') }}"><i class="fa fa-circle-o"></i> AGENDAR</a></li>
 
                         </ul>
                     </li>

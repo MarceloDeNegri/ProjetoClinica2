@@ -16,7 +16,7 @@ class MedicoController extends Controller
     private $totalPage = 2;
 
     public function index(){
-        $medicos = Medico::paginate($this->totalPage);
+        $medicos = Medico::with("especializacoes")->paginate($this->totalPage);
         return view('medicos.index', ['medicos'=>$medicos]);
     }
 

@@ -12,7 +12,6 @@ class Medico extends Model
     protected $fillable = [
         'nome',
         'crm',
-        'especializacao_id',
         'user_id',
 
     ];
@@ -26,8 +25,8 @@ class Medico extends Model
     }
 
 
-    public function especializacao(){
-        return $this->belongsTo('App\Especializacao');
+    public function especializacoes(){
+        return $this->belongsToMany("App\Especializacao", "tipos");
     }
 
 }
