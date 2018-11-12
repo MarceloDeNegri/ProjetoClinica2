@@ -19,11 +19,11 @@ class CreateAgendamentosTable extends Migration
             $table->float('valor')->nullable();
             $table->string('condicao',50);
             $table->integer('paciente_id')->unsigned();
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
             $table->integer('medico_id')->unsigned();
-            $table->foreign('medico_id')->references('id')->on('medicos');
+            $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
             $table->integer('convenio_id')->unsigned();
-            $table->foreign('convenio_id')->references('id')->on('convenios');
+            $table->foreign('convenio_id')->references('id')->on('convenios')->onDelete('cascade');
 
             $table->timestamps();
         });

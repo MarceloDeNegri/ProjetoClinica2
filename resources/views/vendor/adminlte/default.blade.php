@@ -16,7 +16,7 @@
 
 
 
-                        @yield('content')
+                    @yield('content')
 
 
                     </div>
@@ -24,8 +24,9 @@
 
 
 
-
+                    @yield('dyn_scripts')
                     <!-- /.box-body -->
+
                 </div>
                 <!-- Scripts -->
 

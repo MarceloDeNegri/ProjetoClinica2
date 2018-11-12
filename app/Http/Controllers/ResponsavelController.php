@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Responsavel;
+use App\Paciente;
+use App\User;
 use App\Http\Requests\ResponsavelRequest;
 
 class ResponsavelController extends Controller
@@ -29,6 +31,7 @@ class ResponsavelController extends Controller
 
     public function destroy($id){
         Responsavel::find($id)->delete();
+        flash('Responsavel Excluido com Sucesso')->error();
         return redirect()->route('responsaveis');
     }
 

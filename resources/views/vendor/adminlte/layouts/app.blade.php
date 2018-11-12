@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-red-light sidebar-mini">
+<body class="skin-purple-light sidebar-mini">
 <div id="app">
     <div class="wrapper">
 
@@ -60,7 +60,6 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
 
 
 

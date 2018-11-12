@@ -18,7 +18,7 @@ class CreateAvaliacoesTable extends Migration
             $table->string('observacao',250);
             $table->string('nota',90);
             $table->integer('atendimento_id')->unsigned();
-            $table->foreign('atendimento_id')->references('id')->on('atendimentos');
+            $table->foreign('atendimento_id')->references('id')->on('atendimentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

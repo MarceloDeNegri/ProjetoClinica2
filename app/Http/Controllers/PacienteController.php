@@ -42,7 +42,6 @@ class PacienteController extends Controller
             flash('Paciente não pode ser excluido pois está Ativo!')->error();
             return redirect()->route('pacientes');
         };
-
     }
 
     public function edit($id){

@@ -18,7 +18,7 @@ class CreateAtendimentosTable extends Migration
             $table->time('hora_inicio');
             $table->time('hora_fim')->nullable();
             $table->integer('agendamento_id')->unsigned();
-            $table->foreign('agendamento_id')->references('id')->on('agendamentos');
+            $table->foreign('agendamento_id')->references('id')->on('agendamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

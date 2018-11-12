@@ -46,4 +46,25 @@ class MedicoController extends Controller
         Medico::find($id)->update($request->all());
          return redirect()->route('medicos');
      }
+     public function createMaster(){
+        return view('medicos.masterDetail');
+    }
+
+    public function masterDetail(Request $request){
+        $medico = Medico::create([
+                            'nome' => $request->get('nome'),
+                            'crm' => $request->get('crm'),
+                            'user_id' => $request->get('user_id')
+
+            ]);
+        $itens = $request->itens;
+        foreach($itens as $key => $value) {
+            Tipo::create([
+                'medico_id' => $medico->id,
+                'especializacao_id' => $itens[$key]
+
+            ]);
+        }
+         return redirect()->route('medicos');
+     }
 }

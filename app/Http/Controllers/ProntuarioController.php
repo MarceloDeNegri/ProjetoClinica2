@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Agendamento;
+use App\Medico;
+use App\Paciente;
+use App\User;
 use Illuminate\Http\Request;
 use App\Prontuario;
 use App\Atendimento;
 use App\Http\Requests\ProntuarioRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProntuarioController extends Controller
 {
     private $totalPage = 2;
 
     public function index(){
+
+
         $prontuarios = Prontuario::paginate($this->totalPage);
+
         return view('prontuarios.index', ['prontuarios'=>$prontuarios]);
     }
 
@@ -32,6 +41,46 @@ class ProntuarioController extends Controller
         flash('Prontuario preenchido com Sucesso')->success();
         return redirect()->route('prontuarios');
 
+    }
+
+    public function search(Request $request){
+
+        $idade = $request->get('idade');
+        $altura = $request->get('altura');
+        $peso = $request->get('peso');
+
+        if(($idade != null)&&($altura == null)&&($peso == null)){
+            $prontuarios = Prontuario::where('idade', $idade)->paginate($this->totalPage);
+        }
+        if(($idade != null)&&($altura != null)&&($peso == null)){
+            $prontuarios = Prontuario::where('idade', $idade)->paginate($this->totalPage);
+            $prontuarios = Prontuario::where('altura', $altura)->paginate($this->totalPage);
+        }
+
+        if(($idade == null)&&($altura != null)&&($peso == null)){
+            $prontuarios = Prontuario::where('altura', $altura)->paginate($this->totalPage);
+        }
+        if(($idade != null)&&($altura != null)&&($peso != null)){
+            $prontuarios = Prontuario::where('idade', $idade)->paginate($this->totalPage);
+            $prontuarios = Prontuario::where('altura', $altura)->paginate($this->totalPage);
+            $prontuarios = Prontuario::where('peso', $peso)->paginate($this->totalPage);
+        }
+        if(($idade == null)&&($altura != null)&&($peso != null)){
+            $prontuarios = Prontuario::where('altura', $altura)->paginate($this->totalPage);
+            $prontuarios = Prontuario::where('peso', $peso)->paginate($this->totalPage);
+        }
+        if(($idade != null)&&($altura == null)&&($peso != null)){
+            $prontuarios = Prontuario::where('altura', $altura)->paginate($this->totalPage);
+            $prontuarios = Prontuario::where('peso', $peso)->paginate($this->totalPage);
+        }
+
+        if(($idade == null)&&($altura == null)&&($peso != null)){
+            $prontuarios = Prontuario::where('peso', $peso)->paginate($this->totalPage);
+        }
+        if(($idade == null)&&($altura == null)&&($peso == null)){
+            $prontuarios = Prontuario::paginate($this->totalPage);
+        }
+        return view('prontuarios.index', ['prontuarios'=>$prontuarios]);
     }
     public function destroy($id){
         $prontuario = Prontuario::find($id);

@@ -32,10 +32,9 @@ class AgendamentoController extends Controller
 
     }
     public function destroy($id){
-        $agendamento = Agendamento::find($id);
-            $agendamento->delete();
-            flash('Agendamento Excluido com Sucesso')->success();
-            return redirect()->route('agendamentos');
+        $agendamentos = Agendamento::find($id);
+        flash('Agendamento excluido com Sucesso')->error();
+        return view('agendamentos.delete', ['agendamentos'=>$agendamentos]);
 
     }
 

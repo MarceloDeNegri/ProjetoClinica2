@@ -2,12 +2,10 @@
 
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 @endsection
+
 @section('content')
-
-
-
 
 
     <div class="container-fluid">
@@ -47,21 +45,23 @@
 
                     </td>
                     <td></td>
+
                 </tr>
+
                 @endforeach
+
                 </tbody>
         </table>
 
     </div>
 @endsection
 
-@section('javascripts')
+@section('dyn_scripts')
+                <script  src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                $(document).ready( function () {<font></font>
+                    $('#responsaveis').DataTable();<font></font>
+                } );<font></font>
+            @endsection
 
-    <script  src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready( function () {<font></font>
-    $('#responsaveis').DataTable();<font></font>
-} );<font></font>
-    </script>
 
-@endsection
+

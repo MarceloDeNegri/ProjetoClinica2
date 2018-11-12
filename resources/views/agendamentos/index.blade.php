@@ -30,6 +30,7 @@
 
 
         <td>
+
             <a href="{{route('agendamentos.edit', ['id'=>$age->id]) }}"
                 class="btn-sm btn-success">Editar</a>
             <a href="{{route('agendamentos.delete', ['id'=> $age->id]) }}"

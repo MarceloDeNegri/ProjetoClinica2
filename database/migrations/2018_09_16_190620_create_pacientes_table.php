@@ -21,7 +21,7 @@ class CreatePacientesTable extends Migration
             $table->string('alergico',255);
             $table->string('status',12);
             $table->integer('responsavel_id')->unsigned();
-            $table->foreign('responsavel_id')->references('id')->on('responsaveis');
+            $table->foreign('responsavel_id')->references('id')->on('responsaveis')->onDelete('cascade');
 
             $table->timestamps();
         });

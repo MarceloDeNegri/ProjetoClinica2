@@ -22,4 +22,6 @@ class Prontuario extends Model
     public function atendimento(){
         return $this->belongsTo('App\Atendimento','atendimento_id');
     }
+
+
 }

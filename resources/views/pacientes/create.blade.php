@@ -50,7 +50,7 @@
 <div class="form-group">
         {!!Form::label('responsavel_id', 'Responsavel:')!!}
         {!!Form::select('responsavel_id',
-        \App\Responsavel::orderBy('id')->pluck('user_id','id')->toArray(),null,
+        \App\Responsavel::orderBy('id')->pluck('user_id','id','name')->toArray(),null,
         ['class'=>'form-control'])!!}
 </div>
         <div class="form-group">

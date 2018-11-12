@@ -9,9 +9,16 @@ Route::get('/', function () {
 
 
 
+
+
 Auth::routes();
 
+
+
 Route::group(['middleware' => 'auth'], function () {
+
+
+
     Route::group(['prefix'=>'pacientes', 'where'=>['id' => '[0-9]+']],function() {
 
         Route::get('',                      ['as'=>'pacientes',           'uses'=>'PacienteController@index']);
@@ -65,7 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{id}/edit',             ['as'=>'medicos.edit',      'uses'=>'MedicoController@edit']);
         Route::put('{id}/update',           ['as'=>'medicos.update',    'uses'=>'MedicoController@update']);
         Route::post('store',                ['as'=>'medicos.store',     'uses'=>'MedicoController@store']);
-
+        //Relação muitos para muitos
+        Route::get('createMaster',          ['as'=>'medicos.createMaster', 'uses'=>'MedicoController@createMaster']);
+        Route::post('masterDetail',         ['as'=>'medicos.masterDetail', 'uses'=>'MedicoController@masterDetail']);
                     });
 
     Route::group(['prefix'=>'responsaveis', 'where'=>['id' => '[0-9]+']],function() {
@@ -121,10 +130,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('{id}/update',           ['as'=>'prontuarios.update',    'uses'=>'ProntuarioController@update']);
         Route::post('store',                ['as'=>'prontuarios.store',     'uses'=>'ProntuarioController@store']);
         Route::get('{id}/delete',           ['as'=>'prontuarios.delete',    'uses'=>'ProntuarioController@delete']);
+        Route::post('search',               ['as'=>'prontuarios.search',    'uses'=>'ProntuarioController@search']);
+
+    });
+
+    Route::group(['prefix'=>'avaliacoes', 'where'=>['id' => '[0-9]+']],function() {
+
+        Route::get('',                      ['as'=>'avaliacoes',           'uses'=>'AvaliacaoController@index']);
 
     });
 
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+

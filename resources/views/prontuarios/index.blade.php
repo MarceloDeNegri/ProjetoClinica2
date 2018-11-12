@@ -15,6 +15,19 @@
     @endif
     <h3>Prontuarios</h3>
 
+    <div class="box">
+            <div class="box-header">
+            <form action="{{ route('prontuarios.search' )}}" method="POST" class="form form-inline">
+                {!! csrf_field() !!}
+                    <input type="text" name="idade" class="form-control" placeholder="Idade">
+                    <input type="text" name="altura" class="form-control" placeholder="Altura">
+                    <input type="text" name="peso" class="form-control" placeholder="Peso">
+
+
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
+    <hr>
+
 
     <table class="table table-striped table-bordered table-hover">
         <thead>
