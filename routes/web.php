@@ -43,9 +43,15 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 
-        Route::group(['prefix'=>'umedicos','middleware' => ('require-responsavel'), 'where'=>['id' => '[0-9]+']],function() {
+        Route::group(['prefix'=>'arquivos','middleware' => ('require-responsavel'), 'where'=>['id' => '[0-9]+']],function() {
 
-            Route::get('indexProntuario',                      ['as'=>'uresponsaveis',           'uses'=>'UserResponsavelController@indexProntuario']);
+        Route::get('listagem',              ['as'=>'arquivos',           'uses'=>'ArquivosController@index']);
+        Route::get('create',                ['as'=>'arquivos.create',    'uses'=>'ArquivosController@create']);
+        Route::get('{id}/destroy',          ['as'=>'arquivos.destroy',   'uses'=>'ArquivosController@destroy']);
+        Route::get('{id}/edit',             ['as'=>'arquivos.edit',      'uses'=>'ArquivosController@edit']);
+        Route::put('{id}/update',           ['as'=>'arquivos.update',    'uses'=>'ArquivosController@update']);
+        Route::post('store',                ['as'=>'arquivos.store',     'uses'=>'ArquivosController@store']);
+
 
 
             });
@@ -118,6 +124,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{id}/edit',             ['as'=>'responsaveis.edit',      'uses'=>'ResponsavelController@edit']);
         Route::put('{id}/update',           ['as'=>'responsaveis.update',    'uses'=>'ResponsavelController@update']);
         Route::post('store',                ['as'=>'responsaveis.store',     'uses'=>'ResponsavelController@store']);
+        Route::get('{id}/delete',           ['as'=>'responsaveis.delete',    'uses'=>'ResponsavelController@delete']);
 
                                     });
     Route::group(['prefix'=>'agendamentos','middleware' => ('require-atendente'), 'where'=>['id' => '[0-9]+']],function() {
@@ -135,7 +142,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix'=>'atendimentos', 'middleware' => ('require-atendente'),'where'=>['id' => '[0-9]+']],function() {
 
         Route::get('',                      ['as'=>'atendimentos',           'uses'=>'AtendimentoController@index']);
-        Route::get('{id}/create',                ['as'=>'atendimentos.create',    'uses'=>'AtendimentoController@create']);
+        Route::get('{id}/create',           ['as'=>'atendimentos.create',    'uses'=>'AtendimentoController@create']);
         Route::get('{id}/destroy',          ['as'=>'atendimentos.destroy',   'uses'=>'AtendimentoController@destroy']);
         Route::get('{id}/edit',             ['as'=>'atendimentos.edit',      'uses'=>'AtendimentoController@edit']);
         Route::put('{id}/update',           ['as'=>'atendimentos.update',    'uses'=>'AtendimentoController@update']);

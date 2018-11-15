@@ -27,6 +27,7 @@
                 <th>Nascimento</th>
                 <th>CPF</th>
                 <th>Telefone</th>
+                <th></th>
             </tr>
             </thead>
             @foreach ($responsaveis as $resp)
@@ -36,15 +37,23 @@
                     <td> {{$resp->user->cpf}}</td>
                     <td> {{$resp->user->telefone}}</td>
 
-
+                        @if (Auth::user()->nivel_acesso == 1 || Auth::user()->nivel_acesso == 2 )
                     <td>
                         <a href="{{route('responsaveis.edit', ['id'=>$resp->id]) }}"
                            class="btn-sm btn-success">Editar</a>
-                        <a href="{{route('responsaveis.destroy', ['id'=> $resp->id]) }}"
-                           class="btn-sm btn-danger">Remover</a>
+
 
                     </td>
-                    <td></td>
+
+                    @elseif(Auth::user()->nivel_acesso == 0)
+                    <td>
+                            <a href="{{route('responsaveis.edit', ['id'=>$resp->id]) }}"
+                               class="btn-sm btn-success">Editar</a>
+                               <a href="{{route('responsaveis.delete', ['id'=> $resp->id]) }}"
+                                    class="btn-sm btn-danger">Remover</a>
+
+                        </td>
+                    @endif
 
                 </tr>
 
@@ -58,9 +67,11 @@
 
 @section('dyn_scripts')
                 <script  src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                $(document).ready( function () {<font></font>
-                    $('#responsaveis').DataTable();<font></font>
-                } );<font></font>
+                <script>
+                    $(document).ready( function () {
+                        $('#responsaveis').DataTable();
+                    } );
+                </script>
             @endsection
 
 

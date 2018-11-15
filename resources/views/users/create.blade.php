@@ -29,7 +29,7 @@
 
 <div class="form-group">
     {!!Form::label('password', 'Senha:')!!}
-    {!!Form::text('password', null,['class'=>'form-control'])!!}
+    {!!Form::password('password',['class'=>'form-control'])!!}
 </div>
 
 <div class="form-group">

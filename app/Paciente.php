@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use \Datetime;
 
 class Paciente extends Model
 {
@@ -23,5 +24,14 @@ class Paciente extends Model
     public function agendamento(){
         return $this->hasMany('App\Agendamento');
     }
+
+
+public function dtNascimentoForms()
+{
+    $dateTime = new DateTime($this->dtNascimento);
+    $date = $dateTime->format('Y-m-d');
+    $time = $dateTime->format('H:i:s');
+    return $date;
+}
 
 }

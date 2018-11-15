@@ -15,7 +15,7 @@
 
             <li class="treeview">
                     <a href="#">
-                            <i class="fa fa-cards"></i> <span>Relatorios</span>
+                            <i class="fa fa-user"></i> <span>Relatorios</span>
                             <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -29,7 +29,7 @@
 
                 <li class="treeview">
                         <a href="#">
-                            <i class='fa fa-user'></i> <span>Consultas</span>
+                            <i class='fa fa-heartbeat'></i> <span>Consultas</span>
                                 <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -40,7 +40,33 @@
 
                         </ul>
                     </li>
-                    <li><a href="{{ url('') }}"><i class='fa fa-chain-broken'></i> <span>Forum</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class='fa fa-list-ul'></i> <span>Listagem</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('responsaveis') }}"><i class="fa fa-circle-o"></i> RESPONSAVEIS>
+                            <li><a href="{{ url('pacientes') }}"><i class="fa fa-circle-o"></i> PACIENTES</a></li>
+                            <li><a href="{{ url('medicos') }}"><i class="fa fa-circle-o"></i> MEDICOS</a></li>
+                            <li><a href="{{ url('atendentes') }}"><i class="fa fa-circle-o"></i> ATENDENTES</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class='fa fa-chain-broken'></i> <span>Postagens</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('arquivos/listagem') }}"><i class="fa fa-circle-o"></i> LISTA</a></li>
+                            <li><a href="{{ url('arquivos/create') }}"><i class="fa fa-circle-o"></i> CRIAR</a></li>
+
+                        </ul>
+                    </li>
 
         </ul><!-- /.sidebar-menu -->
     </section>

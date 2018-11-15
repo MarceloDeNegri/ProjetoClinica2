@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Arquivo;
+use App\Arquivos;
 use Validation;
 use Storage;
 use App\Providers\Util;
-
 class ArquivosController extends Controller
 {
     /**
@@ -18,22 +17,17 @@ class ArquivosController extends Controller
     public function index()
     {
         $data['arquivos'] = Arquivos::all();
-       return view('listagem',$data);
+       return view('arquivos/listagem',$data);
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $novo_arquivo = $request->all();
-        Arquivo::create($novo_arquivo);
-
-        return redirect()->route('atendentes');
+        return view('arquivos.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,21 +38,21 @@ class ArquivosController extends Controller
     {
         $request->validate([
             'arquivo' => 'required|mimes:jpeg,jpg,bmp,png,gif',
-
+            'descricao' => 'required',
         ]);
-        flash('Falha no arquivo')->error();
+        $msg = "Não foi possível enviar o arquivo";
         if($request->file('arquivo')->isValid()){
+            $util = new Util();
             $ext = $request->file('arquivo')->getClientOriginalExtension();
             $arquivo = new Arquivos();
-            $arquivo->url = $request->file('arquivo')->storeAs('imagens','arquivo.'.$ext,'local');
+            $arquivo->descricao = $request->descricao;
+            $arquivo->url = $request->file('arquivo')->storeAs('imagens',$util->RandomString(5).".".$ext,'local');
             $arquivo->save();
 
-            flash('Arquivo enviado com Sucesso')->success();
+            $msg = "Arquivo enviado com sucesso";
         }
-        return redirect()->back()->with('mensagem',$msg);
-
+        return redirect()->route('arquivos')->with('mensagem',$msg);
     }
-
     /**
      * Display the specified resource.
      *
@@ -69,7 +63,6 @@ class ArquivosController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,9 +73,8 @@ class ArquivosController extends Controller
     {
         $arquivo = Arquivos::find($id);
         $data['arquivo'] = $arquivo;
-        return view('edit',$data);
+        return view('arquivos.edit',$data);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -92,15 +84,14 @@ class ArquivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $msg = "Erro ao alterar o arquivo";
         $arquivo = Arquivos::find($id);
         $arquivo->descricao = $request->descricao;
         if($arquivo->save()){
-
+            $msg = "Arquivo alterado com sucesso";
         }
-        return redirect()->route('lista');
+        return redirect()->route('arquivos')->with('mensagem',$msg);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -116,7 +107,6 @@ class ArquivosController extends Controller
             Storage::disk('local')->delete($url);
             $msg = "Arquivo excluido com sucesso";
         }
-        return redirect()->route('lista')->with('mensagem',$msg);
-
+        return redirect()->route('arquivos')->with('mensagem',$msg);
     }
 }

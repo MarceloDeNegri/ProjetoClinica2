@@ -12,8 +12,13 @@ class ResponsavelController extends Controller
 {
     private $totalPage = 2;
 
+    public function delete($id){
+        $responsaveis = Responsavel::find($id);
+        return view('responsaveis.delete', ['responsaveis'=>$responsaveis]);
+        }
+
     public function index(){
-        $responsaveis = Responsavel::All();
+        $responsaveis = Responsavel::paginate($this->totalPage);;
         return view('responsaveis.index', ['responsaveis'=>$responsaveis]);
     }
 

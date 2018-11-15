@@ -14,7 +14,7 @@
     <h3>Convenios</h3>
 
 
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="Tabela1">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -47,3 +47,13 @@
 </div>
 @endsection
 
+
+@section('dyn_scripts')
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+    <script>
+    $(document).ready( function () {
+        $('#Tabela1').DataTable();});
+    </script>
+@endsection

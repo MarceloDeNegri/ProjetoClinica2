@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Atendente;
+use App\Prontuario;
 use App\Http\Requests\AtendenteRequest;
 
 class AtendenteController extends Controller
@@ -29,7 +30,7 @@ class AtendenteController extends Controller
         $novo_atendente = $request->all();
         Atendente::create($novo_atendente);
 
-        return redirect()->route('atendentes');
+        return redirect()->route('prontuario.create');
     }
 
     public function destroy($id){

@@ -26,7 +26,7 @@
     <div class="form-group">
             {!!Form::label('dtNascimento', 'Data Nascimento:')!!}
             {!!Form::date('dtNascimento',
-            '2017-05-18 00:00:00',
+            $paciente->dtNascimentoForms(),
              ['class'=>'form-control'])!!}
     </div>
 
@@ -52,13 +52,14 @@
 <div class="form-group">
         {!!Form::label('responsavel_id', 'Responsavel:')!!}
         {!!Form::select('responsavel_id',
-        \App\Responsavel::orderBy('id')->pluck('user_id','id')->toArray(),null,
+        \App\Responsavel::orderBy('nome')->pluck('nome','id')->toArray(), $paciente->responsavel_id,
         ['class'=>'form-control'])!!}
 </div>
         <div class="form-group">
            {!!Form::submit('Editar paciente', ['class'=>'btn btn-primary'])!!}
         </div>
-
+        <a href="{{route('pacientes', ['id'=> $paciente->id]) }}"
+            class="btn-sm btn-danger">cancelar</a>
         {!!Form::close()!!}
     </div>
 @endsection

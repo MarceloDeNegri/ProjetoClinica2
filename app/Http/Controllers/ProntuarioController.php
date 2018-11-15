@@ -82,6 +82,7 @@ class ProntuarioController extends Controller
         }
         return view('prontuarios.index', ['prontuarios'=>$prontuarios]);
     }
+
     public function destroy($id){
         $prontuario = Prontuario::find($id);
         if($prontuario->atendimento->agendamento->paciente->status == 'I'){

@@ -30,8 +30,12 @@ class Agendamento extends Model
     public function convenio(){
         return $this->belongsTo('App\Convenio','convenio_id');
     }
-    public function atendimento(){
+    public function atendimentos(){
         return $this->hasMany('App\Atendimento');
+    }
+
+    public static function GetAllByMedico($medicoId){
+        return Agendamento::where('medico_id', $medicoId)->paginate(5);
     }
 
 }

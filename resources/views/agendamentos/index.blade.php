@@ -37,8 +37,10 @@
                 class="btn-sm btn-success">Editar</a>
             <a href="{{route('agendamentos.delete', ['id'=> $age->id]) }}"
                 class="btn-sm btn-danger">Remover</a>
+                @if($age->atendimentos->count() == 0)
             <a href="{{route('atendimentos.create', ['id'=> $age->id]) }}"
                 class="btn-sm btn-danger">Atender</a>
+                @endif
 
         </td>
 

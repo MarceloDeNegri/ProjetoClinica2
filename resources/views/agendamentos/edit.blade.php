@@ -23,14 +23,9 @@
              ['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
-        {!!Form::label('valor', 'Condição:')!!}
-        {!!Form::number('valor', null,['class'=>'form-control'])!!}
-</div>
-    <div class="form-group">
         {!!Form::label('condicao', 'Condição:')!!}
-        {!!Form::text('condicao', null,['class'=>'form-control'])!!}
+        {!!Form::text('condicao', $agendamento->condicao,['class'=>'form-control'])!!}
 </div>
-
 
 <div class="form-group">
         {!!Form::label('paciente_id', 'Paciente:')!!}
@@ -41,7 +36,7 @@
 <div class="form-group">
     {!!Form::label('medico_id', 'Medico:')!!}
     {!!Form::select('medico_id',
-    \App\Medico::orderBy('id')->pluck('user_id','id')->toArray(),null,
+    \App\Medico::orderBy('nome')->pluck('nome','id')->toArray(),null,
     ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">

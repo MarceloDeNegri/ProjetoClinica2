@@ -16,21 +16,20 @@
         </ul>
     </div>
     @endif
-        <form action="{{route('arquivos.store')}}" method="post" enctype="multipart/form-data">
+    @if(Session('mensagem'))
+    <div class="alert alert-info">
+        {{Session('mensagem')}}
+    </div>
+    @endif
+        <form action="/arquivos/{{$arquivo->id}}" method="post">
+        @method('PUT')
             {{csrf_field()}}
             <div class="form-group">
-                <label for="arquivo">Arquivo:</label>
-                <input type="file" name="arquivo" id="arquivo" class="form-control">
-            </div>
-            <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" name="descricao" id="descricao" class="form-control">
+                <input type="text" value="{{$arquivo->descricao}}" name="descricao" id="descricao" class="form-control">
             </div>
-
-
-            <button type="submit" class="btn btn-sm btn-priamry">Enviar</button>
+            <button type="submit" class="btn btn-sm btn-priamry">Alterar</button>
         </form>
     </div>
 </div>
-
 @endsection

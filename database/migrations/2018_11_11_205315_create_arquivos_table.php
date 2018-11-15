@@ -16,6 +16,7 @@ class CreateArquivosTable extends Migration
         Schema::create('arquivos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url')->nullable();
+            $table->text('descricao');
 
             $table->timestamps();
         });

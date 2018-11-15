@@ -29,9 +29,9 @@ class AtendimentoController extends Controller
 
     public function store(AtendimentoRequest $request){
         $novo_atendimento = $request->all();
-        Atendimento::create($novo_atendimento);
+        $atendimento = Atendimento::create($novo_atendimento);
         flash('Dados Cadastrados')->success();
-        return redirect()->route('atendimentos');
+        return \Redirect::route('prontuarios.create', $atendimento->id);
 
     }
 
