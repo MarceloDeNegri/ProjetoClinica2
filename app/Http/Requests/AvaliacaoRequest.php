@@ -24,16 +24,18 @@ class AvaliacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nota' => 'required',
+            'atendente' => 'required',
+            'medico' => 'required',
             'observacao' => 'required',
-            'avaliacao_id' => 'required',
+
         ];
     }
         public function messages()
     {
         return [
-            'nota.required' => 'O campo nota é obrigatório!',
-            'observacao.required'  => 'O campo observação é obrigatório!',
+            'atendente.required' => 'O campo atendimento é obrigatório!',
+            'medico.required'  => 'O campo atendimento medico é obrigatório!',
+            'observacao.required'  => 'O campo  observação é obrigatório!',
 
         ];
     }

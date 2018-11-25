@@ -15,7 +15,7 @@
             @endforeach
         </ul>
     @endif
-    <h3>Usuarios</h3>
+    <h3>Medicos</h3>
 
 
     <table class="table table-striped table-bordered table-hover" id="usuario">
@@ -50,6 +50,8 @@
         </tbody>
     </table>
                 {!!$users->links()!!}
+                <br>
+                <a href="{{route('users.createMedico') }}" class="btn btn-info">Novo Medico</a>
 </div>
 @endsection
 

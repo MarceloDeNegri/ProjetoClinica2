@@ -10,69 +10,169 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Home</div>
+					<div class="panel-heading">Principal</div>
 
 					<div class="panel-body">
 
 
-                            <div class="col-lg-3 col-xs-6">
+                            @if (Auth::user()->nivel_acesso == 1 )
+<center>
+                            <div class="col-lg-3 col-xs-4">
                                     <!-- small box -->
                                     <div class="small-box bg-yellow">
                                       <div class="inner">
-                                        <h3>Usuarios </h3>
+                                        <h3>{{\App\User::where('nivel_acesso', 3)->where('status', 'A')->count() }}</h3>
 
-                                        <p>Cadastro</p>
+                                        <p>Pacientes</p>
                                       </div>
                                       <div class="icon">
-                                        <i class="ion md-person-add"></i>
+                                        <i class="ion-ios-person-add"></i>
                                       </div>
-                                      <a href="{{ url('users/create') }}" class="small-box-footer">Registrar <i class="fa fa-arrow-circle-right"></i></a>
+                                      <a href="{{ url('users/createPaciente') }}" class="small-box-footer">Cadastrar <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                   </div>
 
-                                  <div class="col-lg-3 col-xs-6">
+                                  <div class="col-lg-3 col-xs-4">
                                         <!-- small box -->
                                         <div class="small-box bg-green">
                                           <div class="inner">
-                                            <h3>Medicos </h3>
+                                            <h3>{{\App\User::where('nivel_acesso', 2)->where('status', 'A')->count() }}</h3>
 
-                                            <p>Cadastro</p>
+                                            <p>Medicos</p>
                                           </div>
                                           <div class="icon">
-                                            <i class="ion ion-person-add"></i>
+                                            <i class="ion-ios-person-add"></i>
                                           </div>
-                                          <a href="medicos/createMaster" class="small-box-footer">Registrar <i class="fa fa-arrow-circle-right"></i></a>
+                                          <a href="{{ url('users/createMedico') }}" class="small-box-footer">Cadastrar <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                       </div>
 
-                                      <div class="col-lg-3 col-xs-6">
-                                            <!-- small box -->
-                                            <div class="small-box bg-red">
-                                              <div class="inner">
-                                                <h3>Pacientes </h3>
 
-                                                <p>Cadastro</p>
-                                              </div>
-                                              <div class="icon">
-                                                <i class="ion ion-person-add"></i>
-                                              </div>
-                                              <a href="pacientes/create" class="small-box-footer">Registrar <i class="fa fa-arrow-circle-right"></i></a>
-                                            </div>
-                                          </div>
-                                          <div class="col-lg-3 col-xs-6">
+
+
+                                          <div class="col-lg-3 col-xs-4">
                                                 <!-- small box -->
                                                 <div class="small-box bg-blue">
                                                   <div class="inner">
-                                                    <h3>Responsaveis </h3>
-
-                                                    <p>Cadastro</p>
+                                                    <h3>{{\App\Responsavel::count()}} </h3>
+                                                    <h4>Responsaveis</h4>
                                                   </div>
                                                   <div class="icon">
-                                                    <i class="ion ion-person-add"></i>
+                                                    <i class="ion-ios-person-add"></i>
                                                   </div>
-                                                  <a href="responsaveis/create" class="small-box-footer">Registrar <i class="fa fa-arrow-circle-right"></i></a>
+                                                  <a href="responsaveis/create" class="small-box-footer">Cadastrar <i class="fa fa-arrow-circle-right"></i></a>
                                                 </div>
                                               </div>
+
+
+                                              <div class="col-lg-3 col-xs-4">
+                                                <!-- small box -->
+                                                <div class="small-box bg-orange">
+                                                  <div class="inner">
+
+
+                                                    <h2>Agendamento</h2>
+                                                    <h7>Consultas</h7>
+                                                  </div>
+                                                  <div class="icon">
+                                                    <i class="ion-md-calendar"></i>
+                                                  </div>
+                                                  <a href="{{ url('agendamentos/create') }}" class="small-box-footer">Agendar <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                              </div>
+
+                                              <div class="col-lg-3 col-xs-4">
+                                                <!-- small box -->
+                                                <div class="small-box bg-orange">
+                                                  <div class="inner">
+                                                    <h2>Lista</h2>
+
+                                                    <p>Pacientes</p>
+                                                  </div>
+                                                  <div class="icon">
+                                                    <i class="ion-md-list-box"></i>
+                                                  </div>
+                                                  <a href="{{ url('users/indexPaciente') }}" class="small-box-footer">listar <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-xs-4">
+                                                    <!-- small box -->
+                                                    <div class="small-box bg-blue">
+                                                      <div class="inner">
+                                                        <h2>Lista</h2>
+
+                                                        <p>Médicos</p>
+                                                      </div>
+                                                      <div class="icon">
+                                                        <i class="ion-md-list-box"></i>
+                                                      </div>
+                                                      <a href="{{ url('users/indexMedico') }}" class="small-box-footer">listar <i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-xs-4">
+                                                        <!-- small box -->
+                                                        <div class="small-box bg-green">
+                                                          <div class="inner">
+                                                            <h2>Lista</h2>
+
+                                                            <p>Responsaveis</p>
+                                                          </div>
+                                                          <div class="icon">
+                                                            <i class="ion-md-list-box"></i>
+                                                          </div>
+                                                          <a href="{{ url('responsaveis') }}" class="small-box-footer">listar <i class="fa fa-arrow-circle-right"></i></a>
+                                                        </div>
+                                                    </div>
+
+                                            <div class="col-lg-3 col-xs-4">
+                                                <!-- small box -->
+                                                <div class="small-box bg-yellow">
+                                                  <div class="inner">
+                                                    <h2>{{\App\Agendamento::count()}}</h2>
+
+                                                    <p>Consultas</p>
+                                                  </div>
+                                                  <div class="icon">
+                                                    <i class="ion-ios-medkit"></i>
+                                                  </div>
+                                                  <a href="{{ url('agendamentos') }}" class="small-box-footer">Listar <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                              </div>
+</center>
+                            </div>
+                                              @endif
+
+
+                                              @if (Auth::user()->nivel_acesso == 2 )
+                                              <div class="col-lg-3 col-xs-4">
+                                                    <!-- small box -->
+                                                    <div class="small-box bg-yellow">
+                                                      <div class="inner">
+                                                        <h3>{{\App\Agendamento::GetAllByMedico(Auth()->user()->where('id', Auth::id())->first()->id)->count()}}</h3>
+
+                                                        <p>Consultas</p>
+                                                      </div>
+                                                      <div class="icon">
+                                                        <i class="ion-ios-person-add"></i>
+                                                      </div>
+                                                      <a href="{{ url('agendamentos/indexMedico') }}" class="small-box-footer">Listar <i class="fa fa-arrow-circle-right"></i></a>
+                                                    </div>
+                                                  </div>
+
+
+                                              @endif
+
+
+
+
+
+
+                                              @if (Auth::user()->nivel_acesso == 3 )
+                                              <h5>Seja Bem vindo Paciente</h5>
+                                              @endif
+
 
 
 

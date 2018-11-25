@@ -40,6 +40,8 @@
         </tbody>
     </table>
                 {!!$especializacoes->links()!!}
+                <br>
+                <a href="{{route('especializacoes.create') }}" class="btn btn-info">Nova Especialização</a>
 </div>
 @endsection
 

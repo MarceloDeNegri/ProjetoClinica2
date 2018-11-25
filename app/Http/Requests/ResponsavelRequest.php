@@ -24,13 +24,20 @@ class ResponsavelRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+            'nome' => 'required',
+            'sobrenome' => 'required',
+            'email' => 'required',
+            'telefone' => 'required',
+
         ];
     }
         public function messages()
     {
         return [
-            'user_id.required'  => 'O campo usuario é obrigatório!',
+            'nome.required'  => 'O campo nome é obrigatório!',
+            'sobrenome.required'  => 'O campo sobrenome é obrigatório!',
+            'email.email'  => 'O campo email é deve conter um email válido!',
+            'telefone.required'  => 'O campo telefone é obrigatório!',
 
         ];
     }

@@ -11,6 +11,7 @@
             @endforeach
         </ul>
     @endif
+
     <h3>Atendimentos</h3>
 
 
@@ -19,8 +20,8 @@
             <tr>
                 <th>Inicio</th>
                 <th>Fim</th>
-                <th>Status</th>
                 <th>Paciente</th>
+                <th>Medico</th>
                 <th></th>
             </tr>
         </thead>
@@ -28,21 +29,31 @@
     <tr>
         <td> {{$ate->hora_inicio}}</td>
         <td> {{$ate->hora_fim}}</td>
-        <td> {{$ate->status}}</td>
-        <td> {{$ate->agendamento->paciente->nome}}</td>
+        <td> {{$ate->agendamento->user->name}}</td>
+        <td> {{$ate->agendamento->userm->name}}</td>
+
 
 
 
         <td>
-            <a href="{{route('atendimentos.edit', ['id'=>$ate->id]) }}"
-                class="btn-sm btn-success">Editar</a>
-            <a href="{{route('atendimentos.delete', ['id'=> $ate->id]) }}"
-                class="btn-sm btn-danger">Remover</a>
-                <a href="{{route('prontuarios.create', ['id'=> $ate->id]) }}"
-                    class="btn-sm btn-danger">Prontuario</a>
-
-
+                @if (Auth::user()->nivel_acesso == 2 )
+                @if($ate->prontuarios->count() == 0)
+             <a href="{{route('prontuarios.create', ['id'=> $ate->id]) }}"
+                class="btn-sm btn-warning">Prontuario</a>
+                @else
+               <center> <h5>Prontuario Efetuado</h5></center>
+                @endif
+                @endif
+                @if (Auth::user()->nivel_acesso == 3 )
+                @if($ate->avaliacoes->count() == 0)
+            <a href="{{route('avaliacoes.create', ['id'=> $ate->id]) }}"
+                class="btn-sm btn-info">Avaliar</a>
+                @endif
+                @endif
         </td>
+
+
+
 
     </tr>
     @endforeach

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Datetime;
+use App\User;
 
 class Agendamento extends Model
 {
@@ -16,16 +18,14 @@ class Agendamento extends Model
         'paciente_id',
         'medico_id',
         'convenio_id',
+        'UC_Agendamento',
 
     ];
-    public function paciente(){
-        return $this->belongsTo('App\Paciente','paciente_id');
+    public function user(){
+        return $this->belongsTo('App\User','paciente_id');
     }
-    public function medico(){
-        return $this->belongsTo('App\Medico','medico_id');
-    }
-    public function atendente(){
-        return $this->belongsTo('App\Atendente','atendente_id');
+    public function userm(){
+        return $this->belongsTo('App\User','medico_id');
     }
     public function convenio(){
         return $this->belongsTo('App\Convenio','convenio_id');
@@ -37,5 +37,16 @@ class Agendamento extends Model
     public static function GetAllByMedico($medicoId){
         return Agendamento::where('medico_id', $medicoId)->paginate(5);
     }
+    public static function GetAllByPaciente($pacienteId){
+        return Agendamento::where('paciente_id', $pacienteId)->paginate(5);
+    }
+    public function dtConsultaForms()
+    {
+        $dateTime = new DateTime($this->dtConsulta);
+        $date = $dateTime->format('Y-m-d');
+        $time = $dateTime->format('H:i:s');
+        return $date;
+    }
+
 
 }

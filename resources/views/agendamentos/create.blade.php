@@ -23,6 +23,7 @@
             '2017-05-18 00:00:00',
              ['class'=>'form-control'])!!}
     </div>
+
     <div class="form-group" >
         {!!Form::label('hora', 'Hora Atendimento:' )!!}
         {!!Form::select('hora',
@@ -48,13 +49,13 @@
 <div class="form-group">
         {!!Form::label('paciente_id', 'Paciente:')!!}
         {!!Form::select('paciente_id',
-        \App\Paciente::orderBy('nome')->pluck('nome','id')->toArray(),null,
+         \App\User::where('nivel_acesso', 3)->where('status', 'A')->orderBy('name')->pluck('name', 'id')->toArray(),null,
         ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('medico_id', 'Medico:')!!}
     {!!Form::select('medico_id',
-    \App\Medico::orderBy('nome')->pluck('nome','id')->toArray(),null,
+     \App\User::where('nivel_acesso', 2)->where('status', 'A')->orderBy('name')->pluck('name', 'id')->toArray(),null,
     ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
@@ -70,3 +71,4 @@
         {!!Form::close()!!}
     </div>
 @endsection
+

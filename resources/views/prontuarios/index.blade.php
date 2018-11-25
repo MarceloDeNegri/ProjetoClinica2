@@ -1,6 +1,8 @@
 @extends('adminlte::default')
 
-
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+@endsection
 
 @section('content')
 
@@ -15,47 +17,40 @@
     @endif
     <h3>Prontuarios</h3>
 
-    <div class="box">
-            <div class="box-header">
-            <form action="{{ route('prontuarios.search' )}}" method="POST" class="form form-inline">
-                {!! csrf_field() !!}
-                    <input type="text" name="idade" class="form-control" placeholder="Idade">
-                    <input type="text" name="altura" class="form-control" placeholder="Altura">
-                    <input type="text" name="peso" class="form-control" placeholder="Peso">
 
 
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
-                </form>
-    <hr>
-
-
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="prontuarios">
         <thead>
             <tr>
+                <th>Médico</th>
                 <th>Paciente</th>
                 <th>Data Consulta</th>
                 <th>Idade</th>
                 <th>Peso</th>
                 <th>Altura</th>
-                <th>Responsavel</th>
-                <th></th>
+
+                <th>Ações</th>
             </tr>
         </thead>
         @foreach ($prontuarios as $pro)
     <tr>
-        <td> {{$pro->atendimento->agendamento->paciente->nome}}</td>
-        <td> {{$pro->atendimento->agendamento->dtConsulta}}</td>
+        <td> {{$pro->atendimento->agendamento->userm->name}}</td>
+        <td> {{$pro->atendimento->agendamento->user->name}}</td>
+        <td> {{date( 'd/m/Y' , strtotime($pro->atendimento->agendamento->dtConsulta))}}</td>
         <td> {{$pro->idade}}</td>
         <td> {{$pro->peso}}</td>
         <td> {{$pro->altura}}</td>
-        <td> {{$pro->atendimento->agendamento->paciente->responsavel->user->name}}</td>
+
 
 
         <td>
+                @if (Auth::user()->nivel_acesso == 2 || Auth::user()->nivel_acesso == 0 )
             <a href="{{route('prontuarios.edit', ['id'=>$pro->id]) }}"
                 class="btn-sm btn-success">Editar</a>
-            <a href="{{route('prontuarios.destroy', ['id'=> $pro->id]) }}"
-                        class="btn-sm btn-danger">Remover</a>
+
+                @endif
+            <a href="{{route('prontuarios.detail', ['id'=> $pro->id]) }}"
+                class="btn-sm btn-warning">Detalhes</a>
 
         </td>
 
@@ -66,4 +61,11 @@
                 {!!$prontuarios->links()!!}
 </div>
 @endsection
-
+@section('dyn_scripts')
+                <script  src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                <script>
+                    $(document).ready( function () {
+                        $('#prontuarios').DataTable();
+                    } );
+                </script>
+            @endsection

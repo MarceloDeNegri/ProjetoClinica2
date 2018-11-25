@@ -13,8 +13,12 @@ class ResponsavelMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        return $next($request);
+    public function handle($request, Closure $next, $guard = null) {
+        if (Auth::guard($guard)->check() && Auth::user()->nivel_acesso == 3) {
+            return $next($request);
+        }else{
+            return view('vendor/adminlte/auth/login');
+        }
+
     }
 }

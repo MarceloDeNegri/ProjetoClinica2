@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Novo Paciente</h3>
+        <h3>Novo Responsavel</h3>
 
         @if ($errors->any())
             <ul class="alert alert-danger">
@@ -16,15 +16,28 @@
 
         {!!Form::open(['route' =>['responsaveis.update', $responsavel->id],"method"=>'put'])!!}
 
-
         <div class="form-group">
-            {!!Form::label('user_id', 'Usuario:')!!}
-            {!!Form::select('user_id',
-            \App\Responsavel::orderBy('name')->pluck('name','id')->toArray(),$responsavel->responsavel_id,
-            ['class'=>'form-control'])!!}
+                {!!Form::label('nome', 'Nome:')!!}
+                {!!Form::text('nome', $responsavel->nome,['class'=>'form-control'])!!}
         </div>
         <div class="form-group">
-            {!!Form::submit('Editar Responsavel', ['class'=>'btn btn-primary'])!!}
+                {!!Form::label('sobrenome', 'Sobrenome:')!!}
+                {!!Form::text('sobrenome', $responsavel->sobrenome,['class'=>'form-control'])!!}
+        </div>
+        <div class="form-group">
+                {!!Form::label('telefone', 'Telefone:')!!}
+                {!!Form::text('telefone', $responsavel->telefone,['class'=>'form-control'])!!}
+        </div>
+        <div class="form-group">
+                {!!Form::label('email', 'Email:')!!}
+                {!!Form::text('email', $responsavel->email,['class'=>'form-control'])!!}
+        </div>
+
+
+
+
+        <div class="form-group">
+            {!!Form::submit('Criar Responsavel', ['class'=>'btn btn-primary'])!!}
         </div>
 
         {!!Form::close()!!}

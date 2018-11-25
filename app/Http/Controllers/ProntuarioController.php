@@ -12,16 +12,29 @@ use App\Prontuario;
 use App\Atendimento;
 use App\Http\Requests\ProntuarioRequest;
 use Illuminate\Support\Facades\DB;
+use Dompdf\Adapter\CPDF;
+use Dompdf\Dompdf;
+use Dompdf\Exception;
 
 class ProntuarioController extends Controller
 {
     private $totalPage = 2;
 
+    public function relatorio($id){
+        $prontuarios = Prontuario::find($id);
+        $pdf = \PDF::loadView('prontuarios.pdf',['prontuarios' => $prontuarios]);
+            return $pdf->download('user.pdf');
+     }
+
+    public function detail($id){
+        $prontuarios = Prontuario::find($id);
+        return view('prontuarios.detail', ['prontuarios'=>$prontuarios]);
+        }
+
     public function index(){
-
-
+        //$prontuarios = Auth::user()->id;
         $prontuarios = Prontuario::paginate($this->totalPage);
-
+      // $prontuarios = Prontuario::GetAllByMedico(Auth()->user()->where('id', Auth::id())->first()->id);
         return view('prontuarios.index', ['prontuarios'=>$prontuarios]);
     }
 
@@ -85,7 +98,7 @@ class ProntuarioController extends Controller
 
     public function destroy($id){
         $prontuario = Prontuario::find($id);
-        if($prontuario->atendimento->agendamento->paciente->status == 'I'){
+        if($prontuario->atendimento->agendamento->user->status == 'I'){
             $prontuario->delete();
             flash('Prontuario Excluido com Sucesso')->success();
             return redirect()->route('prontuarios');

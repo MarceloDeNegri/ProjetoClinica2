@@ -28,15 +28,18 @@ class AgendamentoRequest extends FormRequest
             'paciente_id' => 'required',
             'medico_id' => 'required',
             'convenio_id' => 'required',
+
+
         ];
     }
         public function messages()
     {
         return [
-            'dtConsulta.required' => 'O campo nome é obrigatório!',
+            'dtConsulta.required' => 'O campo data da consulta é obrigatório!',
             'paciente_id.required'  => 'O campo paciente é obrigatório!',
             'medico_id.required'  => 'O campo médico é obrigatório!',
             'convenio_id.required'  => 'O campo convenio é obrigatório!',
+
         ];
     }
 }

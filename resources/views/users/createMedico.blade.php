@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Novo Usuario</h3>
+        <h3>Novo Médico</h3>
 
         @if ($errors->any())
             <ul class="alert alert-danger">
@@ -82,51 +82,7 @@
     \App\Especializacao::orderBy('nome')->pluck('nome','id')->toArray(),null,
     ['class'=>'form-control','placeholder' => 'Selecione uma opção'])!!}
 </div>
-<!-- Atendente -->
-<hr>
-<center><h5>Atendente</h5></center>
-<hr>
-<div class="form-group">
-    {!!Form::label('cracha', 'N° Cracha:')!!}
-    {!!Form::text('cracha', null,['class'=>'form-control', 'placeholder'=>'Digite o numero do cracha'])!!}
-</div>
-<!-- Paciente -->
-<hr>
-<center><h5>Paciente</h5></center>
-<hr>
-<div class="form-group">
-    {!!Form::label('tratamento', 'Algum tipo de tratamento:')!!}
-    {!!Form::textarea('tratamento', null,['class'=>'form-control', 'placeholder'=>'Possui algum tratamento em andamento'])!!}
-</div>
-<div class="form-group"id="alergico"  style="display:none">
-    {!!Form::label('alergico', 'Alergia a medicação:')!!}
-    {!!Form::text('alergico', null,['class'=>'form-control', 'placeholder'=>'Alguma alergia a medicação'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('convulsao', 'Convulsõe/eplepsia:')!!}
-    {!!Form::textarea('convulsao', null,['class'=>'form-control', 'placeholder'=>'Qual tipo de convulsão'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('diabete', 'Diabete:')!!}
-    {!!Form::text('diabete', null,['class'=>'form-control', 'placeholder'=>'Qual o tipo de diabetes'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('marcapasso', 'Marcapasso/Contém:')!!}
-    {!!Form::textarea('marcapasso', null,['class'=>'form-control', 'placeholder'=>'Possui algum marcapasso'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('tipoSanguineo', 'Tipo Sanguineo:')!!}
-    {!!Form::select('tipoSanguineo',
-    array ('A'=>'A' , 'AB'=>'AB', 'B'=>'B', 'O-'=>'O-', 'O+'=>'O+' ),
-    'A',
-    ['class'=>'form-control'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('responsavel_id', 'Responsavel:')!!}
-    {!!Form::select('responsavel_id',
-    \App\Responsavel::orderBy('nome')->pluck('nome','id')->toArray(),null,
-    ['class'=>'form-control','placeholder' => 'Selecione uma opção'])!!}
-</div>
+
         <div class="form-group">
            {!!Form::submit('Criar Usuario', ['class'=>'btn btn-primary'])!!}
         </div>
@@ -134,27 +90,5 @@
         {!!Form::close()!!}
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
 
-<script type="text/javascript">
-        $('document').ready(function(){
-            var option = document.getElementById("nivel_acesso").value;
-            //alert('opcao: '+option);
-            if(option == 2){
-                $('#alergico').show();
-            }
-        });
-
-function optionCheck(){
-    var option = document.getElementById("nivel_acesso").value;
-    if(option == 2){
-        $('#alergico').show();
-    }
-    if(option == 0){
-        $('#alergico').hide();
-    }
-}
-</script>
 @endsection

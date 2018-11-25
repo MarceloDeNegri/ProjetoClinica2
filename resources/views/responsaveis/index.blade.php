@@ -24,29 +24,22 @@
             <thead>
             <tr>
                 <th>Nome</th>
-                <th>Nascimento</th>
-                <th>CPF</th>
+                <th>Sobrenome</th>
                 <th>Telefone</th>
-                <th></th>
+                <th>Email</th>
+                <th>Ações</th>
             </tr>
             </thead>
             @foreach ($responsaveis as $resp)
                 <tr>
-                    <td> {{$resp->user->name}}</td>
-                    <td> {{$resp->user->email}}</td>
-                    <td> {{$resp->user->cpf}}</td>
-                    <td> {{$resp->user->telefone}}</td>
+                    <td> {{$resp->nome}}</td>
+                    <td> {{$resp->sobrenome}}</td>
+                    <td> {{$resp->telefone}}</td>
+                    <td> {{$resp->email}}</td>
 
-                        @if (Auth::user()->nivel_acesso == 1 || Auth::user()->nivel_acesso == 2 )
+
                     <td>
-                        <a href="{{route('responsaveis.edit', ['id'=>$resp->id]) }}"
-                           class="btn-sm btn-success">Editar</a>
-
-
-                    </td>
-
-                    @elseif(Auth::user()->nivel_acesso == 0)
-                    <td>
+                            @if (Auth::user()->nivel_acesso == 1 )
                             <a href="{{route('responsaveis.edit', ['id'=>$resp->id]) }}"
                                class="btn-sm btn-success">Editar</a>
                                <a href="{{route('responsaveis.delete', ['id'=> $resp->id]) }}"
@@ -61,7 +54,9 @@
 
                 </tbody>
         </table>
-
+        {!!$responsaveis->links()!!}
+        <br>
+        <a href="{{route('responsaveis.create') }}" class="btn btn-info">Novo Responsavel</a>
     </div>
 @endsection
 

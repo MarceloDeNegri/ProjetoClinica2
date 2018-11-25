@@ -9,7 +9,9 @@ class Avaliacao extends Model
     protected $table = 'avaliacoes';
 
     protected $fillable = [
-        'nota',
+        'atendente',
+        'medico',
+        'equipamento',
         'observacao',
         'atendimento_id',
 

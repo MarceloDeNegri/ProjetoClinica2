@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Novo Usuario</h3>
+        <h3>Novo Paciente</h3>
 
         @if ($errors->any())
             <ul class="alert alert-danger">
@@ -68,28 +68,6 @@
     'Ativo',
     ['class'=>'form-control'])!!}
 </div>
-<!-- Medicos -->
-<hr>
-<center><h5>Médico</h5></center>
-<hr>
-<div class="form-group">
-    {!!Form::label('crm', 'CRM:')!!}
-    {!!Form::text('crm', null,['class'=>'form-control', 'placeholder'=>'digite o crm medico'])!!}
-</div>
-<div class="form-group">
-    {!!Form::label('especializacao_id', 'Especializacao:')!!}
-    {!!Form::select('especializacao_id',
-    \App\Especializacao::orderBy('nome')->pluck('nome','id')->toArray(),null,
-    ['class'=>'form-control','placeholder' => 'Selecione uma opção'])!!}
-</div>
-<!-- Atendente -->
-<hr>
-<center><h5>Atendente</h5></center>
-<hr>
-<div class="form-group">
-    {!!Form::label('cracha', 'N° Cracha:')!!}
-    {!!Form::text('cracha', null,['class'=>'form-control', 'placeholder'=>'Digite o numero do cracha'])!!}
-</div>
 <!-- Paciente -->
 <hr>
 <center><h5>Paciente</h5></center>
@@ -134,27 +112,5 @@
         {!!Form::close()!!}
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
 
-<script type="text/javascript">
-        $('document').ready(function(){
-            var option = document.getElementById("nivel_acesso").value;
-            //alert('opcao: '+option);
-            if(option == 2){
-                $('#alergico').show();
-            }
-        });
-
-function optionCheck(){
-    var option = document.getElementById("nivel_acesso").value;
-    if(option == 2){
-        $('#alergico').show();
-    }
-    if(option == 0){
-        $('#alergico').hide();
-    }
-}
-</script>
 @endsection

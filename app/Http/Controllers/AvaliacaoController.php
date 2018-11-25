@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Avaliacao;
+use App\Atendimento;
 use App\Http\Requests\AvaliacaoRequest;
 
 class AvaliacaoController extends Controller
@@ -15,8 +16,13 @@ class AvaliacaoController extends Controller
         return view('avaliacoes.index', ['avaliacoes'=>$avaliacoes]);
     }
 
-    public function create(){
-        return view('avaliacoes.create');
+    public function create($id){
+        $atendimento = Atendimento::find($id);
+        if($atendimento){
+        return view('avaliacoes.create', ['atendimento'=> $atendimento]);
+    }
+
+    return redirect()->route('avaliacoes');
     }
 
     public function store(AvaliacaoRequest $request){

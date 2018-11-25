@@ -19,7 +19,7 @@
     <div class="form-group">
             {!!Form::label('dtConsulta', 'Data Consulta:')!!}
             {!!Form::date('dtConsulta',
-            '2017-05-18 00:00:00',
+            $agendamento->dtConsultaForms(),
              ['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
@@ -30,13 +30,13 @@
 <div class="form-group">
         {!!Form::label('paciente_id', 'Paciente:')!!}
         {!!Form::select('paciente_id',
-        \App\Paciente::orderBy('nome')->pluck('nome','id')->toArray(),null,
+        \App\User::where('nivel_acesso', 3)->where('status', 'A')->orderBy('name')->pluck('name', 'id')->toArray(),$agendamento->paciente_id,
         ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('medico_id', 'Medico:')!!}
     {!!Form::select('medico_id',
-    \App\Medico::orderBy('nome')->pluck('nome','id')->toArray(),null,
+    \App\User::where('nivel_acesso', 2)->where('status', 'A')->orderBy('name')->pluck('name', 'id')->toArray(),$agendamento->medico_id,
     ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">

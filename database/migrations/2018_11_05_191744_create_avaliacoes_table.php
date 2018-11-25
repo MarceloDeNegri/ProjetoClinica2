@@ -15,8 +15,10 @@ class CreateAvaliacoesTable extends Migration
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('atendente',50);
+            $table->string('medico',50);
+            $table->string('equipamento',50);
             $table->string('observacao',250);
-            $table->string('nota',90);
             $table->integer('atendimento_id')->unsigned();
             $table->foreign('atendimento_id')->references('id')->on('atendimentos')->onDelete('cascade');
             $table->timestamps();

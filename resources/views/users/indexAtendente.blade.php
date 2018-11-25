@@ -50,6 +50,8 @@
         </tbody>
     </table>
                 {!!$users->links()!!}
+                <br>
+                <a href="{{route('users.create') }}" class="btn btn-info">Novo Atendente</a>
 </div>
 @endsection
 

@@ -15,7 +15,7 @@
             @endforeach
         </ul>
     @endif
-    <h3>Usuarios</h3>
+    <h3>Paciente</h3>
 
 
     <table class="table table-striped table-bordered table-hover" id="usuario">
@@ -26,7 +26,7 @@
                 <th>Telefone</th>
                 <th>Nascimento</th>
                 <th>CPF</th>
-                <th></th>
+                <th>Ações</th>
             </tr>
         </thead>
         @foreach ($users as $u)
@@ -48,8 +48,11 @@
     </tr>
     @endforeach
         </tbody>
+
     </table>
                 {!!$users->links()!!}
+                <br>
+                <a href="{{route('users.createPaciente') }}" class="btn btn-info">Novo Paciente</a>
 </div>
 @endsection
 

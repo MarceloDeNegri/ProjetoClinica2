@@ -9,7 +9,7 @@
 
         Data Consulta: {{$agendamentos->dtConsulta}}<br>
 
-        Paciente: {{$agendamentos->paciente->nome}}<br>
+        Paciente: {{$agendamentos->user->name}}<br>
 
 
 </td>

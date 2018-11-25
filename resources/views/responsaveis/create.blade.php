@@ -17,11 +17,25 @@
         {!!Form::open(['route' =>'responsaveis.store'])!!}
 
         <div class="form-group">
-            {!!Form::label('user_id', 'Usuario:')!!}
-            {!!Form::select('user_id',
-            \App\User::orderBy('name')->pluck('name','id')->toArray(),null,
-            ['class'=>'form-control'])!!}
+                {!!Form::label('nome', 'Nome:')!!}
+                {!!Form::text('nome', null,['class'=>'form-control'])!!}
         </div>
+        <div class="form-group">
+                {!!Form::label('sobrenome', 'Sobrenome:')!!}
+                {!!Form::text('sobrenome', null,['class'=>'form-control'])!!}
+        </div>
+        <div class="form-group">
+                {!!Form::label('telefone', 'Telefone:')!!}
+                {!!Form::text('telefone', null,['class'=>'form-control'])!!}
+        </div>
+        <div class="form-group">
+                {!!Form::label('email', 'Email:')!!}
+                {!!Form::text('email', null,['class'=>'form-control'])!!}
+        </div>
+
+
+
+
         <div class="form-group">
             {!!Form::submit('Criar Responsavel', ['class'=>'btn btn-primary'])!!}
         </div>

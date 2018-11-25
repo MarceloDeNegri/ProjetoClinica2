@@ -19,12 +19,12 @@
 
 <div class="form-group">
         {!!Form::label('nome', 'Nome:')!!}
-        {!!Form::text('nome', null,['class'=>'form-control'])!!}
+        {!!Form::text('nome', $especializacao->nome,['class'=>'form-control'])!!}
 </div>
 
 <div class="form-group">
     {!!Form::label('descricao', 'Descricao:')!!}
-    {!!Form::textarea('descricao', null,['class'=>'form-control'])!!}
+    {!!Form::textarea('descricao', $especializacao->descricao,['class'=>'form-control'])!!}
 </div>
 
 

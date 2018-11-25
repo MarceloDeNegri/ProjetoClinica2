@@ -20,14 +20,14 @@
             {!!Form::label('hora_inicio', 'Inicio:' )!!}
             {!!Form::select('hora_inicio',
             array ('09:00:00'=>'09:00:00' , '09:30:00'=>'09:30:00',  ),
-            '09:00:00',
+            $atendimento->horaIForms(),
             ['class'=>'form-control'])!!}
         </div>
         <div class="form-group" >
             {!!Form::label('hora_fim', 'Fim:' )!!}
             {!!Form::select('hora_fim',
             array ('09:00:00'=>'09:00:00' , '09:30:00'=>'09:30:00',  ),
-            '09:30:00',
+            $atendimento->horaFForms(),
             ['class'=>'form-control'])!!}
         </div>
 

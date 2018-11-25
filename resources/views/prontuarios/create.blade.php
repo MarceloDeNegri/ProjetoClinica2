@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Atendimento</h3>
+        <h3>Prontuario</h3>
 
         @if ($errors->any())
             <ul class="alert alert-danger">

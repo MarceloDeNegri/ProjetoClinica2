@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Atendimento</h3>
+        <h3>Editar Prontuario</h3>
 
         @if ($errors->any())
             <ul class="alert alert-danger">
@@ -18,32 +18,32 @@
 
         <div class="form-group">
             {!!Form::label('peso', 'Peso:')!!}
-            {!!Form::text('peso', null,['class'=>'form-control'])!!}
+            {!!Form::text('peso', $prontuario->peso,['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
         {!!Form::label('altura', 'Altura:')!!}
-        {!!Form::text('altura', null,['class'=>'form-control'])!!}
+        {!!Form::text('altura', $prontuario->altura,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('idade', 'Idade:')!!}
-    {!!Form::number('idade', null,['class'=>'form-control'])!!}
+    {!!Form::number('idade', $prontuario->idade,['class'=>'form-control'])!!}
 </div>
 
 <div class="form-group">
     {!!Form::label('alimentacao', 'Alimentação:')!!}
-    {!!Form::text('alimentacao', null,['class'=>'form-control'])!!}
+    {!!Form::text('alimentacao', $prontuario->alimentacao,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('febre', 'Febre:')!!}
-    {!!Form::text('febre', null,['class'=>'form-control'])!!}
+    {!!Form::text('febre', $prontuario->febre,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('dores', 'Dores:')!!}
-    {!!Form::textarea('dores', null,['class'=>'form-control'])!!}
+    {!!Form::textarea('dores', $prontuario->dores,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     {!!Form::label('observacao', 'Observação:')!!}
-    {!!Form::textarea('observaca', null,['class'=>'form-control'])!!}
+    {!!Form::textarea('observacao', $prontuario->observacao,['class'=>'form-control'])!!}
 </div>
 
 
@@ -51,8 +51,12 @@
     {!! Form::hidden('atendimento_id', $atendimento->id) !!}
 </div>
         <div class="form-group">
-           {!!Form::submit('Salvar Prontuario', ['class'=>'btn btn-primary'])!!}
-        </div>
+           {!!Form::submit('Editar', ['class'=>'btn-sm btn-primary'])!!}
+
+
+                <a href="{{url()->previous() }}"
+                            class="btn btn-danger">Voltar</a>
+                </div>
 
         {!!Form::close()!!}
     </div>
