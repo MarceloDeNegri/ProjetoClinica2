@@ -44,6 +44,7 @@ class AgendamentoController extends Controller
     }
 
     public function store(AgendamentoRequest $request){
+
         try{
         $novo_agendamento = $request->all();
         //if(User::find($request->get('paciente_id'))->dtConsulta == $dtConsulta){
@@ -63,14 +64,11 @@ class AgendamentoController extends Controller
 
     public function destroy($id){
         $agendamento = Agendamento::find($id);
-        if($agendamento->user->status == 'I'){
             $agendamento->delete();
         flash('Agendamento Excluido com Sucesso')->success();
         return redirect()->route('agendamentos');
-    }else {
-        flash('Agendamento não pode ser excluido pois paciente está Ativo!')->error();
-        return redirect()->route('agendamentos');
-    }}
+
+    }
 
     public function edit($id){
         $agendamento = Agendamento::find($id);

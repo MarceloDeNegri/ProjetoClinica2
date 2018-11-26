@@ -18,7 +18,7 @@ use Dompdf\Exception;
 
 class ProntuarioController extends Controller
 {
-    private $totalPage = 2;
+    private $totalPage = 10;
 
     public function relatorio($id){
         $prontuarios = Prontuario::find($id);

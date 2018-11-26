@@ -51,7 +51,7 @@
 <div class="form-group" >
     {!!Form::label('nivel_acesso', 'Nivel de Acesso:' )!!}
     {!!Form::select('nivel_acesso',
-    array (0 =>'Admin' , 1=> 'Atendente',  2=> 'Medico', 3=> 'Paciente'  ),
+    array (3=> 'Paciente'  ),
     3,
     ['class'=>'form-control'])!!}
 </div>
@@ -114,3 +114,11 @@
 
 
 @endsection
+
+@section('dyn_scripts')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script>
+        $('#telefone').mask('(99) 9999-9999');
+        $('#cpf').mask('999.999.999-99');
+ </script>
+ @endsection

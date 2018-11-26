@@ -36,13 +36,18 @@
 
 
                 @if (Auth::user()->nivel_acesso == 2 )
-                @if($age->atendimentos->count() == 0)
+                @if($age->condicao == 'Cancelado')
+                <center><h5>Agendamento Cancelado</h5></center>
+                @elseif($age->atendimentos->count() == 0)
             <a href="{{route('atendimentos.create', ['id'=> $age->id]) }}"
                 class="btn-sm btn-danger">Atender</a>
                 @else
                 <center><h5>Atendimento efetuado</h5></center>
                 @endif
                 @endif
+
+
+
 
         </td>
 

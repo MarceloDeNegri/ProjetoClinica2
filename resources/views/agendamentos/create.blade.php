@@ -40,10 +40,17 @@
         '09:00:00',
         ['class'=>'form-control'])!!}
     </div>
-    <div class="form-group">
-        {!!Form::label('condicao', 'Condição:')!!}
-        {!!Form::text('condicao', null,['class'=>'form-control'])!!}
-</div>
+
+    <div class="form-group" >
+            {!!Form::label('condicao', 'Status:' )!!}
+            {!!Form::select('condicao',
+            array ('Ativo'=>'Ativo' , 'Cancelado'=>'Cancelado',
+            'N/Compareceu'=>'N/Compareceu' , 'Remarcado'=>'Remarcado',
+                    ),
+            'Ativo',
+            ['class'=>'form-control'])!!}
+        </div>
+
 
 
 <div class="form-group">

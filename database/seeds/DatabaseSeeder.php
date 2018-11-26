@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
          $this->call(ConveniosSeeder::class);
          //$this->call(PacientesSeeder::class);
          //$this->call(AtendenteSeeder::class);
-         //$this->call(AgendamentoSeeder::class);
-         //$this->call(AtendimentoSeeder::class);
-         //$this->call(ProntuarioSeeder::class);
+         $this->call(AgendamentoSeeder::class);
+         $this->call(AtendimentoSeeder::class);
+         $this->call(ProntuarioSeeder::class);
 
 
 

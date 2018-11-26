@@ -34,6 +34,28 @@ class UsersSeeder extends Seeder
 
             ]);
             DB::table('users')->insert([
+                'name'=>'João Maria',
+                'email'=>'joaomaria@bol.com.br',
+                'password'=>bcrypt('123456'),
+                'telefone'=>'3444-1640',
+                'cpf'=>'1234567',
+                'rg'=>'3445',
+                'nivel_acesso'=>'2',
+                'dtNascimento'=>'2000-10-10',
+                'status'=>'A',
+                'crm'=>'12321312',
+                'especializacao_id'=>'1',
+                'cracha'=>'d',
+                'tratamento'=>'d',
+                'alergico'=>'d',
+                'convulsao'=>'d',
+                'diabete'=>'d',
+                'marcapasso'=>'d',
+                'tipoSanguineo'=>'d',
+                'responsavel_id'=>'1',
+
+                ]);
+            DB::table('users')->insert([
                 'name'=>'Raiane',
                 'email'=>'raiane@bol.com.br',
                 'password'=>bcrypt('123456'),

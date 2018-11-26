@@ -33,7 +33,7 @@ class AgendamentoSeeder extends Seeder
                     'hora'=>'09:00:00',
                     'condicao'=>'10 x',
                     'paciente_id'=>2,
-                    'medico_id'=>3,
+                    'medico_id'=>2,
                     'convenio_id'=>1,
                     ]);
                     DB::table('agendamentos')->insert([
@@ -49,7 +49,7 @@ class AgendamentoSeeder extends Seeder
                             'hora'=>'09:00:00',
                             'condicao'=>'10 x',
                             'paciente_id'=>3,
-                            'medico_id'=>3,
+                            'medico_id'=>1,
                             'convenio_id'=>3,
                             ]);
     }

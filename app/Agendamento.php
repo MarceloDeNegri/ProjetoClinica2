@@ -35,7 +35,7 @@ class Agendamento extends Model
     }
 
     public static function GetAllByMedico($medicoId){
-        return Agendamento::where('medico_id', $medicoId)->paginate(5);
+        return Agendamento::where('medico_id', $medicoId)->orderBy('id','desc')->paginate(5);
     }
     public static function GetAllByPaciente($pacienteId){
         return Agendamento::where('paciente_id', $pacienteId)->paginate(5);
